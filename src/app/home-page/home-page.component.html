@@ -1,0 +1,29 @@
+<p>
+  home-page works! heh {{text}}
+</p>
+<input #input value="{{text}}" (input)="changeText($event.target.value)">
+
+<div *ngFor="let people of pageService.peoples$ | async">
+  <div>
+    <span>People: {{people.name}} {{people.age}}</span>
+    <input type="text" [(ngModel)]="people.name">
+    <input type="checkbox" [attr.checked]="people.active ? 'checked' : undefined" (change)="peopleChecked(people, $event.target.checked)">
+  </div>
+</div>
+<button (click)="addPeople()">add people</button>
+<button (click)="getCurrentValue()">get current</button>
+
+
+
+<div>{{pageService.peoples$ | async | json}}</div>
+
+<app-about-page></app-about-page>
+
+
+<div>-------</div>
+<div *ngFor="let people of peoples">
+  <div>
+    <span>People: {{people.name}} {{people.age}}</span>
+    <input type="checkbox" [attr.checked]="people.active ? 'checked' : undefined">
+  </div>
+</div>

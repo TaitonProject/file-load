@@ -1,0 +1,15 @@
+<p>
+  about-page works!
+</p>
+<!-- <div>{{pageSerivce.peoples$ | async | json}}</div> -->
+<!-- <div>{{peoples | json}}</div> -->
+
+<div *ngFor="let people of peoples">
+  <div>
+    <span>People: {{people.name}} {{people.age}}</span>
+    <input type="text" [(ngModel)]="people.name">
+    <input type="checkbox" [attr.checked]="people.active ? 'checked' : undefined" (change)="peopleChecked(people, $event.target.checked)">
+  </div>
+</div>
+
+<app-second [peoples]="peoples"></app-second>
