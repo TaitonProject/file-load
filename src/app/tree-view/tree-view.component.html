@@ -1,0 +1,23 @@
+<ul class="treenodes">
+  <li *ngFor="let node of nodes" class="treenode">
+
+    <i *ngIf="node.children && !node.isExpanded" class="fas fa-angle-right " (click)="onExpand(node)"></i>
+    <i *ngIf="node.children && node.isExpanded" class="fas fa-angle-down" (click)="onExpand(node)"></i>
+    <input type="checkbox" [checked]="node.selected" [ngClass]="{'node button fa fa-': true, 'minus': node.isExpanded, 'plus': !node.isExpanded, '-square-o': true}">
+    <!-- <input type="checkbox" [checked]="node.active" (click)="node.active = !node.active" [ngClass]="{'node button fa fa-': true, 'minus': node.isExpanded, 'plus': !node.isExpanded, '-square-o': true}"> -->
+    <div class="nodeinfo">
+
+      <span class="nodetext {{node == selectedNode ? 'bg-info' : ''}} {{node.parent ? '' : 'text-root'}}" [ngClass]="{'active': node.active}"
+        (click)="node.selected = !node.selected; onSelectNode(node)">
+        {{node.name}}
+      </span>
+      <span *ngIf="node.indeterminate">indeterminate</span>
+      <span *ngIf="node.badge > 0" class="nodebage badge">{{node.badge}}</span>
+
+      <cl-tree-view *ngIf="node.isExpanded" [nodes]="node.children" [selectedNode]="selectedNode" (selectedChanged)="onSelectNode($event)"
+        (selectedParentChanged)="selectParent(node)" (expand)="expand.emit()">
+
+      </cl-tree-view>
+    </div>
+  </li>
+</ul>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterContentInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FileData } from './models/file-data.interface';
 import { LoadFileService } from './load-file.service';
 
@@ -7,11 +7,12 @@ import { LoadFileService } from './load-file.service';
   templateUrl: './load-file.component.html',
   styleUrls: ['./load-file.component.css']
 })
-export class LoadFileComponent implements OnInit, AfterContentInit, OnDestroy {
+export class LoadFileComponent implements OnInit {
 
   public files: FileData[] = [];
   public content: string;
   public allContent: string;
+  downloadFile: File;
 
   @ViewChild('loadFile') private loadFileElement: ElementRef;
 
@@ -21,11 +22,6 @@ export class LoadFileComponent implements OnInit, AfterContentInit, OnDestroy {
 
   ngOnInit() {
 
-  }
-
-  ngAfterContentInit(): void {
-    this.loadContent();
-    this.getFiles();
   }
 
   loadContent() {
@@ -40,9 +36,10 @@ export class LoadFileComponent implements OnInit, AfterContentInit, OnDestroy {
   }
 
   changeFile(event: any) {
-    const file: FileData = event.target.files[0];
+    const file: FileData = { file: event.target.files[0], data: '' };
     if (file) {
       this._service.readFile(file).then((result: FileData) => {
+        console.log('result', result);
         this.addFile(result);
         this._service.resetFileInput(this.loadFileElement);
       });
@@ -50,16 +47,13 @@ export class LoadFileComponent implements OnInit, AfterContentInit, OnDestroy {
   }
 
   addFile(file: FileData) {
-    console.log('file data', file.data);
     this.files.push(file);
-    this.content += this._service.fileToTag(file);
+    console.log('file.data', file.data);
+    const data = file.data.split(',')[1];
+    const type = file.data.split(',')[0];
+    console.log('data', data);
+    console.log('type', type);
+    this.downloadFile = new File([data], file.file.name, { type: type });
   }
 
-  saveContent() {
-    window.localStorage.setItem('content', this.content);
-  }
-
-  ngOnDestroy(): void {
-    this.saveContent();
-  }
 }

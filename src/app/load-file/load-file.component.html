@@ -2,10 +2,10 @@
   <input #loadFile type="file" (change)="changeFile($event)" [ngStyle]="{'display': 'none'}">
   <button (click)="loadFile.click()">load</button>
   <div>files</div>
-  <div *ngFor="let file of files">
-    {{file.name}} size ({{file.size}})
+  <div *ngFor="let fileData of files">
+
+    <a [attr.href]="fileData.file | filterFile | safe : 'resourceUrl'" download="{{fileData.file.name}}">{{fileData.file.name}} size ({{fileData.file.size}})</a>
   </div>
 </div>
-<button (click)="saveContent()">save</button>
-<textarea [ngModel]="content | filterFile" (ngModelChange)="content = $event" class="content">
-</textarea>
+
+<a *ngIf="downloadFile" [attr.href]="downloadFile | filterFile | safe : 'resourceUrl'" download="{{downloadFile.name}}">{{downloadFile.name}} size ({{downloadFile.size}})</a>

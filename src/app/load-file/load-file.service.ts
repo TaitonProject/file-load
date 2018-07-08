@@ -13,7 +13,7 @@ export class LoadFileService {
 
     return new Promise((resolve, reject) => {
       reader.onload = (event) => {
-        file.data = new Blob([event.target['result']]);
+        file.data = event.target['result'];
         resolve(file);
       };
 
@@ -21,11 +21,12 @@ export class LoadFileService {
         return reject(this);
       };
 
-      if (/^image/.test(file.type)) {
-        reader.readAsDataURL(file);
-      } else {
-        reader.readAsText(file);
-      }
+      // if (/^image/.test(file.type)) {
+      //   reader.readAsDataURL(file);
+      // } else {
+      //   reader.readAsText(file);
+      // }
+      reader.readAsDataURL(file.file);
 
     });
   }
@@ -37,6 +38,6 @@ export class LoadFileService {
   }
 
   public fileToTag(file: FileData): string {
-    return '<file name=\"' + file.name + '\" style=\'display:none\'>' + file.data + '</file>';
+    return '<file name=\"' + file.file.name + '\" style=\'display:none\'>' + file.data + '</file>';
   }
 }

@@ -7,7 +7,12 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { SecondComponent } from './second/second.component';
 import { LoadFileComponent } from './load-file/load-file.component';
-import { FilerFilePipe } from './load-file/filter-file.pipe';
+import { FilerFilePipe } from './load-file/pipes/filter-file.pipe';
+import { SafePipe } from './load-file/pipes/safe.pipe';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-router.module';
+import { CoreModule } from './core/core.module';
+import { HeaderComponent } from './core/header/header.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +21,17 @@ import { FilerFilePipe } from './load-file/filter-file.pipe';
     AboutPageComponent,
     SecondComponent,
     LoadFileComponent,
-    FilerFilePipe
+    FilerFilePipe,
+    SafePipe,
+    HeaderComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    RouterModule,
+    ReactiveFormsModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

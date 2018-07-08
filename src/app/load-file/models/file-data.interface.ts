@@ -1,3 +1,4 @@
-export interface FileData extends File {
+export interface FileData {
+    file: File;
     data: any;
 }
