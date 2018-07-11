@@ -17,6 +17,7 @@ export class ClTreeViewComponent implements OnInit, AfterViewInit {
   @ViewChild('tree') treeComponent: TreeComponent;
 
   treeModel: TreeModel;
+  searchInput: string;
 
   constructor() { }
 

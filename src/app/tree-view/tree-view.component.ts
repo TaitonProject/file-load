@@ -27,7 +27,6 @@ export class TreeViewComponent implements OnInit {
   @Output() selectedChanged: EventEmitter<ITreeNode> = new EventEmitter<ITreeNode>();
   @Output() selectedParentChanged: EventEmitter<ITreeNode> = new EventEmitter<ITreeNode>();
   @Output() requestNodes: EventEmitter<ITreeNode> = new EventEmitter<ITreeNode>();
-  @Output() expand: EventEmitter<void> = new EventEmitter<void>();
 
   shownNodes = [];
   constructor(public treeViewService: TreeViewService) { }
@@ -80,12 +79,7 @@ export class TreeViewComponent implements OnInit {
   }
 
   onExpand(node: ITreeNode) {
-    this.expand.emit();
     node.isExpanded = !node.isExpanded;
-
-    if (node.isExpanded && (!node.children || node.children.length === 0)) {
-      this.requestNodes.emit(node);
-    }
   }
 
 }

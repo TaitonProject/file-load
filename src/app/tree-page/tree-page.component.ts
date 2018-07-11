@@ -13,6 +13,8 @@ export class TreePageComponent implements OnInit, DoCheck {
 
   @ViewChild('virtualScroll') virtualScroll: VirtualScrollComponent;
 
+  searchInput: string;
+
   shownNodes = [];
   nodes = [
     {

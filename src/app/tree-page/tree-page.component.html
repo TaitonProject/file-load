@@ -1,3 +1,6 @@
 <!-- <virtual-scroll #virtualScroll [items]="nodes" [childHeight]="18" (update)="updateItems($event)" (change)="changeItems($event)"> -->
-<cl-tree-view [nodes]="nodes"></cl-tree-view>
+        <input [(ngModel)]="searchInput"> 
+        {{searchInput}}
+        
+<cl-tree-view [nodes]="nodes | filterNodes : searchInput"></cl-tree-view>
 <!-- </virtual-scroll> -->

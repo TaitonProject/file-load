@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ClTreeViewComponent } from './cl-tree-view.component';
 import { TreeModule } from 'angular-tree-component';
 
