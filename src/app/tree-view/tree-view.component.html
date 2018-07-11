@@ -20,26 +20,16 @@
             [ngClass]="{'node button fa fa-': true, 'minus': node.isExpanded, 'plus': !node.isExpanded, '-square-o': true}"
         >
         <div class="nodeinfo">
-
-            <span
-                class="nodetext {{node == selectedNode ? 'bg-info' : ''}} {{node.parent ? '' : 'text-root'}}"
-                [ngClass]="{'active': node.active}"
-                (click)="node.active = !node.active"
-            >
-                {{node.name}}
-            </span>
-            <span *ngIf="node.indeterminate">indeterminate</span>
-            <span
-                *ngIf="node.badge > 0"
-                class="nodebage badge"
-            >
-                {{node.badge}}
-            </span>
+            <cl-node-element
+                [node]="node"
+                [highLightText]="highLightText"
+            ></cl-node-element>
 
             <cl-tree-view
                 *ngIf="node.isExpanded"
                 [nodes]="node.children"
                 [selectedNode]="selectedNode"
+                [highLightText]="highLightText"
                 (selectedChanged)="onSelectNode($event)"
                 (selectedParentChanged)="selectParent(node)"
             >

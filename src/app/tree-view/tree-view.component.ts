@@ -23,6 +23,7 @@ export class TreeViewComponent implements OnInit {
 
   @Input() nodes: Array<ITreeNode>;
   @Input() selectedNode: ITreeNode;
+  @Input() highLightText: string;
 
   @Output() selectedChanged: EventEmitter<ITreeNode> = new EventEmitter<ITreeNode>();
   @Output() selectedParentChanged: EventEmitter<ITreeNode> = new EventEmitter<ITreeNode>();
@@ -74,7 +75,7 @@ export class TreeViewComponent implements OnInit {
     } else if (parentIndeterminate) {
       node.indeterminate = true;
     }
-    node.active = node.indeterminate;
+    // node.active = node.indeterminate;
     this.selectedParentChanged.emit();
   }
 

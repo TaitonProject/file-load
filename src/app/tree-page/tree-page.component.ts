@@ -30,7 +30,7 @@ export class TreePageComponent implements OnInit, DoCheck {
           isExpanded: false, indeterminate: false, active: true, selected: true
         }
       ],
-      isExpanded: false, indeterminate: false, active: true, selected: true
+      isExpanded: false, indeterminate: false, active: false, selected: true
     },
     {
       id: 4,
@@ -38,15 +38,15 @@ export class TreePageComponent implements OnInit, DoCheck {
       children: [
         {
           id: 5, name: 'child2.1',
-          isExpanded: true, indeterminate: false, active: false, selected: false
+          isExpanded: true, indeterminate: false, active: true, selected: false
         },
         {
           id: 6,
           name: 'child2.2',
           children: [
             {
-              id: 70, name: 'subsub',
-              isExpanded: true, indeterminate: false, active: false, selected: false
+              id: 70, name: 'subsub5555',
+              isExpanded: true, indeterminate: false, active: true, selected: false
             },
             {
               id: 71, name: 'subsub2',
@@ -102,9 +102,9 @@ export class TreePageComponent implements OnInit, DoCheck {
             }
           ]
           ,
-          isExpanded: true, indeterminate: false, active: false, selected: false
+          isExpanded: true, indeterminate: false, active: true, selected: false
         }
-      ], isExpanded: true, indeterminate: false, active: false, selected: false
+      ], isExpanded: true, indeterminate: false, active: true, selected: false
     },
     {
       id: 8,
@@ -2138,7 +2138,7 @@ export class TreePageComponent implements OnInit, DoCheck {
     // this.expandedNode = this.createExpandedNode(this.nodes);
     console.log('fff', this.expandedNode);
     // this.treeViewService.searchNode$.next(78);
-    this.setActiveById(78);
+    // this.setActiveById(78);
   }
 
   createExpandedNode(nodes: any[]): ITreeNode[] {

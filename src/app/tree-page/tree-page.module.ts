@@ -7,6 +7,7 @@ import { TreePageComponent } from './tree-page.component';
 import { VirtualScrollModule } from 'angular2-virtual-scroll';
 import { TreeViewModule } from '../tree-view/tree-view.module';
 import { FormsModule } from '@angular/forms';
+import { FilterActiveNodePipe } from './pipes/filter-active-node.pipe';
 import { FilterNodesPipe } from './pipes/filter-nodes.pipe';
 
 @NgModule({
@@ -18,6 +19,6 @@ import { FilterNodesPipe } from './pipes/filter-nodes.pipe';
     VirtualScrollModule,
     TreeViewModule
   ],
-  declarations: [TreePageComponent, FilterNodesPipe]
+  declarations: [TreePageComponent, FilterActiveNodePipe, FilterNodesPipe]
 })
 export class TreePageModule { }

@@ -1,0 +1,16 @@
+<span
+    class="nodetext"
+    [ngClass]="{'active': node.active}"
+    clHightlight
+    [highlightText]="highLightText"
+    [innerHTML]="node.name"
+    (click)="node.active = !node.active"
+>
+</span>
+<span *ngIf="node.indeterminate">indeterminate</span>
+<span
+    *ngIf="node.badge > 0"
+    class="nodebage badge"
+>
+    {{node.badge}}
+</span>

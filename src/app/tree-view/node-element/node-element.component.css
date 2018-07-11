@@ -12,6 +12,6 @@
 .angle {
     cursor: pointer;
 }
-.highlight {
+span.nodetext span.hightlight{
     color: blue;
 }
