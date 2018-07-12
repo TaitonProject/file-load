@@ -12,7 +12,6 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       state('hide', style({ opacity: 0 })),
       transition('show => hide', animate('100ms ease-out')),
       transition('hide => show', animate('300ms ease-in')),
-      // transition('show => hide', animate('100ms ease-in')),
     ])
   ],
 })
@@ -27,14 +26,10 @@ export class TooltipContainerComponent implements AfterViewInit, DoCheck {
   constructor(public tooltipService: TooltipService, private _zone: NgZone) { }
 
   ngAfterViewInit(): void {
-    this.tooltipService.tooltipElement = this.tooltipElement;
     this.tooltipService.visibleTooltip$.subscribe(visible => {
       this._zone.run(() => {
         this.visibleTooltip = visible;
         this.toggleVisibleTooltip();
-        if (!visible) {
-          this.tooltipElement.nativeElement.style.visibility = 'hidden';
-        }
       });
     });
     this.tooltipService.optionsTooltip$.subscribe(options => {
@@ -47,6 +42,9 @@ export class TooltipContainerComponent implements AfterViewInit, DoCheck {
 
   toggleVisibleTooltip() {
     this.stateVisible = this.visibleTooltip ? 'show' : 'hide';
+    if (!this.visibleTooltip) {
+      this.tooltipElement.nativeElement.style.visibility = 'hidden';
+    }
   }
 
   ngDoCheck(): void {

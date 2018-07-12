@@ -9,15 +9,12 @@ export class TooltipService {
 
   visibleTooltip$: Subject<boolean> = new Subject();
   optionsTooltip$: Subject<TooltipOptions> = new Subject();
-  tooltipElement: ElementRef;
 
   constructor() { }
 
   toggleTooltip(value: boolean) {
-    console.log('toggle', value);
     this.visibleTooltip$.next(value);
   }
-
   setOptions(options: any) {
     this.optionsTooltip$.next(options);
   }
