@@ -33,7 +33,7 @@ export class TooltipContainerComponent implements AfterViewInit, DoCheck {
         this.visibleTooltip = visible;
         this.toggleVisibleTooltip();
         if (!visible) {
-          //this.tooltipElement.nativeElement.style.visibility = 'hidden';
+          this.tooltipElement.nativeElement.style.visibility = 'hidden';
         }
       });
     });

@@ -24,9 +24,9 @@ export class TooltipService {
 
   setPosition(x: number, y: number, element: ElementRef) {
     const tooltipElement: HTMLElement = element.nativeElement;
-    //tooltipElement.style.position = 'absolute';
-    //tooltipElement.style.left = x + 'px';
-    //tooltipElement.style.top = y + 'px';
-    //tooltipElement.style.visibility = 'visible';
+    tooltipElement.style.position = 'absolute';
+    tooltipElement.style.left = x + 10 + 'px';
+    tooltipElement.style.top = y + 10 + 'px';
+    tooltipElement.style.visibility = 'visible';
   }
 }
