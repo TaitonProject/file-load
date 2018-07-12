@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { HomePageService, People } from '../home-page/home-page.service';
 import { Observable } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   templateUrl: './about-page.component.html',
   styleUrls: ['./about-page.component.css']
 })
-export class AboutPageComponent implements OnInit {
+export class AboutPageComponent implements OnInit, DoCheck {
 
   public text$: Observable<string>;
   peoples: any[] = [];
@@ -32,5 +32,9 @@ export class AboutPageComponent implements OnInit {
     // const currentPeoples = this.pageService.peoples$.getValue();
     // currentPeoples.find(searchPeople => searchPeople.name === people.name).active = value;
     // this.pageService.peoples$.next(currentPeoples);
+  }
+
+  ngDoCheck(): void {
+    console.log('ggggg');
   }
 }

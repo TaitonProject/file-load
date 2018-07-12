@@ -1,4 +1,4 @@
-import { Component, DoCheck, NgZone, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, DoCheck, NgZone, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { TooltipService } from '../tooltip.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
@@ -23,7 +23,7 @@ export class TooltipContainerComponent implements AfterViewInit, DoCheck {
   stateVisible = 'hide';
   content: string;
 
-  constructor(public tooltipService: TooltipService, private _zone: NgZone) { }
+  constructor(public tooltipService: TooltipService, private _zone: NgZone, private _cd: ChangeDetectorRef) { }
 
   ngAfterViewInit(): void {
     this.tooltipService.visibleTooltip$.subscribe(visible => {
