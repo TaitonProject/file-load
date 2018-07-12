@@ -14,6 +14,7 @@ export class NodeElementComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('ooo');
   }
 
 }

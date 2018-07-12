@@ -13,7 +13,8 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-router.module';
 import { CoreModule } from './core/core.module';
 import { HeaderComponent } from './core/header/header.component';
-
+import { TooltipModule } from './core/tooltip/tooltip.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,9 @@ import { HeaderComponent } from './core/header/header.component';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
+    TooltipModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,9 +19,7 @@ export class FilterActiveNodePipe implements PipeTransform {
         if (node.children) {
           node.children = this.getActiveChilds(node.children);
         }
-        if (!resultNodes.find(_ => _ === node)) {
-          resultNodes.push(node);
-        }
+        resultNodes.push(node);
       }
       if (node.children) {
         resultNodes.push(...this.getSelectedNodes(node.children));

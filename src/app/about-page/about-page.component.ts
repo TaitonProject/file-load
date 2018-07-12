@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HomePageService, People } from '../home-page/home-page.service';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,6 +11,7 @@ export class AboutPageComponent implements OnInit {
 
   public text$: Observable<string>;
   peoples: any[] = [];
+  show = true;
 
   constructor(public pageSerivce: HomePageService) { }
 

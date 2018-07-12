@@ -1,15 +1,35 @@
-<p>
-  about-page works!
-</p>
-<!-- <div>{{pageSerivce.peoples$ | async | json}}</div> -->
-<!-- <div>{{peoples | json}}</div> -->
+<div *ngIf="show">
+    <div>
+        <button
+            clTooltip="my frist tooltip"
+            (click)="show = false"
+        >
+            click me!
+        </button>
+    </div>
 
-<div *ngFor="let people of peoples">
-  <div>
-    <span>People: {{people.name}} {{people.age}}</span>
-    <input type="text" [(ngModel)]="people.name">
-    <input type="checkbox" [attr.checked]="people.active ? 'checked' : undefined" (change)="peopleChecked(people, $event.target.checked)">
-  </div>
+    <div>
+        <button clTooltip="my second tooltip">click me!</button>
+    </div>
+    <div>
+        <button clTooltip="my 2 tooltip">click me!</button>
+    </div>
+    <div>
+        <button clTooltip="my 3 tooltip">click me!</button>
+    </div>
+    <div>
+        <button clTooltip="my 4 tooltip">click me!</button>
+    </div>
+    <div>
+        <button clTooltip="my 5 tooltip">click me!</button>
+    </div>
+    <div>
+        <button clTooltip="my 6 tooltip">click me!</button>
+    </div>
+    <div>
+        <button clTooltip="my 7 tooltip">click me!</button>
+    </div>
+    <div>
+        <button clTooltip="my 8 tooltip">click me!</button>
+    </div>
 </div>
-
-<app-second [peoples]="peoples"></app-second>
