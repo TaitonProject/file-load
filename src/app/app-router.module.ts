@@ -8,7 +8,8 @@ import { AboutPageComponent } from './about-page/about-page.component';
 export const routes: Routes = [
   { path: ROUTES_PATH.loadFile, component: LoadFileComponent },
   { path: ROUTES_PATH.tree, loadChildren: './tree-page/tree-page.module#TreePageModule' },
-  { path: ROUTES_PATH.tooltip, component: AboutPageComponent }
+  { path: ROUTES_PATH.tooltip, component: AboutPageComponent },
+  { path: ROUTES_PATH.scroll, loadChildren: './scroll-page/scroll-page.module#ScrollPageModule' }
 ];
 
 @NgModule({

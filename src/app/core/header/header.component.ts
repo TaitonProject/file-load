@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ROUTES_PATH } from '../../shared/constants/routes.const';
 
 @Component({
@@ -7,7 +7,7 @@ import { ROUTES_PATH } from '../../shared/constants/routes.const';
   styleUrls: ['./header.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent implements OnInit, DoCheck {
+export class HeaderComponent implements OnInit {
 
   ROUTES = ROUTES_PATH;
 
@@ -16,7 +16,4 @@ export class HeaderComponent implements OnInit, DoCheck {
   ngOnInit() {
   }
 
-  ngDoCheck(): void {
-    console.log('gggggggggggggggg');
-  }
 }

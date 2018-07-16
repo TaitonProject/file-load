@@ -2,5 +2,6 @@ export const ROUTES_PATH = {
     loadFile: 'load-file',
     home: '',
     tree: 'tree',
-    tooltip: 'tooltip'
+    tooltip: 'tooltip',
+    scroll: 'scroll'
 };

@@ -1,0 +1,36 @@
+<input
+    #bookName
+    type="text"
+    placeholder="book name"
+>
+<input
+    #bookIndex
+    type="number"
+    placeholder="book index"
+>
+<input
+    type="button"
+    value="add book"
+    (click)="addBook(bookName.value)"
+>
+<input
+    type="button"
+    value="add book by index"
+    (click)="insertBook(bookName.value, bookIndex.value)"
+>
+<input
+    type="button"
+    value="change book name"
+    (click)="changeBook(bookName.value, bookIndex.value)"
+>
+<virtual-scroll
+    #virtualScroll
+    [items]="books"
+    (update)="shownBooks = $event"
+>
+    <cl-simple-item
+        *ngFor="let book of shownBooks"
+        [item]="book"
+        (deleteItem)="deleteBook($event)"
+    ></cl-simple-item>
+</virtual-scroll>

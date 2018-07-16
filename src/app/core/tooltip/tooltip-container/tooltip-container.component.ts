@@ -1,4 +1,4 @@
-import { Component, DoCheck, NgZone, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, NgZone, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { TooltipService } from '../tooltip.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
@@ -15,7 +15,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ])
   ],
 })
-export class TooltipContainerComponent implements AfterViewInit, DoCheck {
+export class TooltipContainerComponent implements AfterViewInit {
 
   @ViewChild('tooltip') tooltipElement: ElementRef;
 
@@ -47,7 +47,4 @@ export class TooltipContainerComponent implements AfterViewInit, DoCheck {
     }
   }
 
-  ngDoCheck(): void {
-    console.log('do check!');
-  }
 }
