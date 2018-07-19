@@ -1,7 +1,7 @@
 <div
-    #tooltip
     class="tooltip"
     [@toggleTooltip]="stateVisible"
 >
     {{content}}
 </div>
+<div [ngStyle]="{'visibility': 'hidden'}">{{counter()}}</div>

@@ -2,6 +2,7 @@
     class="nodetext"
     [ngClass]="{'active': node.active}"
     clHightlight
+    clTooltip="node.badge"
     [highlightText]="highLightText"
     [innerHTML]="node.name"
     (click)="node.active = !node.active"

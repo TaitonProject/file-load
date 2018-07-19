@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HomePageService, People } from '../home-page/home-page.service';
 import { Observable } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   templateUrl: './about-page.component.html',
   styleUrls: ['./about-page.component.css']
 })
-export class AboutPageComponent implements OnInit, DoCheck {
+export class AboutPageComponent implements OnInit {
 
   public text$: Observable<string>;
   peoples: any[] = [];
@@ -34,7 +34,4 @@ export class AboutPageComponent implements OnInit, DoCheck {
     // this.pageService.peoples$.next(currentPeoples);
   }
 
-  ngDoCheck(): void {
-    console.log('ggggg');
-  }
 }

@@ -1,50 +1,65 @@
-import { Component, NgZone, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, NgZone, ElementRef, AfterViewInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { TooltipService } from '../tooltip.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Subscription } from 'rxjs';
+import { mergeMap, mergeAll, switchMap, merge, combineAll, combineLatest, map, mapTo, debounceTime } from 'rxjs/operators';
+import { TooltipOptions } from '../tooltip.directive';
 
 @Component({
-  selector: 'cl-tooltip-container',
-  templateUrl: './tooltip-container.component.html',
-  styleUrls: ['./tooltip-container.component.css'],
-  animations: [
-    trigger('toggleTooltip', [
-      state('show', style({ opacity: 1 })),
-      state('hide', style({ opacity: 0 })),
-      transition('show => hide', animate('100ms ease-out')),
-      transition('hide => show', animate('300ms ease-in')),
-    ])
-  ],
+    selector: 'cl-tooltip-container',
+    templateUrl: './tooltip-container.component.html',
+    styleUrls: ['./tooltip-container.component.css'],
+    animations: [
+        trigger('toggleTooltip', [
+            state('show', style({ opacity: 1 })),
+            state('hide', style({ opacity: 0 })),
+            transition('show => hide', animate('100ms ease-out')),
+            transition('hide => show', animate('300ms ease-in')),
+        ])
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TooltipContainerComponent implements AfterViewInit {
+export class TooltipContainerComponent implements AfterViewInit, OnDestroy {
 
-  @ViewChild('tooltip') tooltipElement: ElementRef;
+    static counter = 0;
+    visibleTooltip: boolean;
+    stateVisible = 'hide';
+    content: string;
+    subscriptions: Array<Subscription> = new Array<Subscription>();
 
-  visibleTooltip: boolean;
-  stateVisible = 'hide';
-  content: string;
+    constructor(
+        public element: ElementRef,
+        public tooltipService: TooltipService,
+        private _zone: NgZone,
+        private _cd: ChangeDetectorRef) { }
 
-  constructor(public tooltipService: TooltipService, private _zone: NgZone, private _cd: ChangeDetectorRef) { }
-
-  ngAfterViewInit(): void {
-    this.tooltipService.visibleTooltip$.subscribe(visible => {
-      this._zone.run(() => {
-        this.visibleTooltip = visible;
-        this.toggleVisibleTooltip();
-      });
-    });
-    this.tooltipService.optionsTooltip$.subscribe(options => {
-      this._zone.run(() => {
-        this.content = options.content;
-        this.tooltipService.setPosition(options.position.x, options.position.y, this.tooltipElement);
-      });
-    });
-  }
-
-  toggleVisibleTooltip() {
-    this.stateVisible = this.visibleTooltip ? 'show' : 'hide';
-    if (!this.visibleTooltip) {
-      this.tooltipElement.nativeElement.style.visibility = 'hidden';
+    ngAfterViewInit(): void {
+        this.subscriptions.push(
+            this.tooltipService.optionsTooltip$.pipe(combineLatest(this.tooltipService.visibleTooltip$)).pipe(debounceTime(5))
+                .subscribe(res => {
+                    this._zone.run(() => {
+                        this.content = res[0].content;
+                        this.tooltipService.setPosition(res[0].position.x, res[0].position.y, this.element);
+                        this.visibleTooltip = res[1];
+                        this.toggleVisibleTooltip();
+                        this._cd.markForCheck();
+                    });
+                })
+        );
     }
-  }
+
+    toggleVisibleTooltip() {
+        this.stateVisible = this.visibleTooltip ? 'show' : 'hide';
+        if (!this.visibleTooltip) {
+            this.element.nativeElement.style.visibility = 'hidden';
+        }
+    }
+    counter() {
+        console.log('count!', TooltipContainerComponent.counter++);
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.forEach(_ => _.unsubscribe());
+    }
 
 }
