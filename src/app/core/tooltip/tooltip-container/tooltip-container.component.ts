@@ -37,6 +37,7 @@ export class TooltipContainerComponent implements AfterViewInit, OnDestroy {
         this.subscriptions.push(
             this.tooltipService.optionsTooltip$.pipe(combineLatest(this.tooltipService.visibleTooltip$)).pipe(debounceTime(5))
                 .subscribe(res => {
+                    console.log('res', res);
                     this._zone.run(() => {
                         this.content = res[0].content;
                         this.tooltipService.setPosition(res[0].position.x, res[0].position.y, this.element);

@@ -23,11 +23,13 @@ export class TooltipDirective implements AfterViewInit, OnDestroy {
         private _renderer: Renderer2) { }
 
     ngAfterViewInit() {
+        console.log('tooltip init', this._element);
         this._zone.runOutsideAngular(_ => {
             this._renderer.listen(this._element.nativeElement, 'mouseenter', this.show);
             this._renderer.listen(this._element.nativeElement, 'mouseleave', this.hide);
             this._renderer.listen(this._element.nativeElement, 'focusin', this.show);
             this._renderer.listen(this._element.nativeElement, 'focusout', this.hide);
+            this._renderer.listen(this._element.nativeElement, 'click', this.hide);
         });
     }
 

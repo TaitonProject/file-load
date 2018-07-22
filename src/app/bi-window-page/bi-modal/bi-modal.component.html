@@ -1,0 +1,57 @@
+<div class="modal">
+    <div class="header">
+        <div class="title">Modal BI</div>
+        <div class="close">
+            <div class="icon">x</div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="available-items">
+            <cl-chart-list
+                class="list"
+                [items]="availableItems"
+            ></cl-chart-list>
+        </div>
+        <div class="charts">
+            <div class="charts-container">
+                <cl-chart-list
+                    class="x-chart list"
+                    [items]="chartItems"
+                ></cl-chart-list>
+                <cl-chart-list
+                    class="y-chart list"
+                    [items]="chartItems"
+                ></cl-chart-list>
+                <cl-chart-list
+                    class="z-chart list"
+                    [items]="chartItems"
+                ></cl-chart-list>
+                <!-- <div class="y-chart chart">
+                    <div
+                        *ngFor="let chart of chartItems"
+                        class="chart-item"
+                    >
+                        {{chart}}
+                    </div>
+                </div>
+                <div class="z-chart chart">
+                    <div
+                        *ngFor="let chart of chartItems"
+                        class="chart-item"
+                    >
+                        {{chart}}
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="message-container"></div>
+        <div class="buttons-container">
+            <div class="buttons">
+                <button>Apply</button>
+                <button>Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

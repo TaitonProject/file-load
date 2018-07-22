@@ -3,5 +3,6 @@ export const ROUTES_PATH = {
     home: '',
     tree: 'tree',
     tooltip: 'tooltip',
-    scroll: 'scroll'
+    scroll: 'scroll',
+    biWindow: 'bi-window'
 };

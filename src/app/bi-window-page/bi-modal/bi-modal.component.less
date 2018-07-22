@@ -1,0 +1,110 @@
+@modal-padding: 15px;
+@modal-backgroud-color: #333333;
+@modal-text-color: #bdbdbd;
+@modal-background-content: #666666;
+
+.modal {
+    height: 415px;
+    width: 400px;
+    background: @modal-background-content;
+
+    .header {
+        display: flex;
+        height: 50px;
+        background: @modal-backgroud-color;
+        position: relative;
+
+        .title {
+            padding: @modal-padding;
+            color: @modal-text-color;
+            text-align: left;
+            font-size: 17px;
+            width: 50%;
+            cursor: default;
+        }
+
+        .close {
+            display: flex;
+            justify-content: flex-end;
+            width: 50%;
+            
+            .icon {
+                color: @modal-text-color;
+                cursor: pointer;
+                padding: 0 5px 0 0;
+                height: max-content;
+                
+            }
+        }
+    }
+
+    .content {
+        height: 300px;
+        padding: @modal-padding;
+        display: flex;
+
+        .available-items {
+            overflow-y: auto;
+            width: 50%;
+            background: @modal-backgroud-color;
+            margin-right: 5px;
+        }
+
+        .charts {
+            width: 50%;
+            margin-left: 5px;
+
+            .charts-container {
+
+                .x-chart {
+                    height: 80px;
+                    max-height: 80px;
+                }
+
+                .y-chart {
+                    height: 80px;
+                    max-height: 80px;
+                }
+
+                .z-chart {
+                    height: 120px;
+                    max-height: 120px;
+                }
+            }
+        }
+    }
+
+    .footer {
+        display: flex;
+        
+        height: 35px;
+        background: @modal-backgroud-color;
+        padding: @modal-padding;
+
+        .message-container {
+            width: 50%;
+        }
+
+        .buttons-container {
+            display:flex;
+            justify-content: flex-end;
+            width: 50%;
+            .buttons {
+                margin-bottom: 10px;
+                button {
+                    height: 25px;
+                    width: 75px;
+                    cursor: pointer;
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}
+
+.list {
+    margin-bottom: 10px;
+    &:last-child {
+        margin-bottom: 0px;
+    }
+}

@@ -13,10 +13,12 @@ export class TooltipService {
   constructor() { }
 
   toggleTooltip(value: boolean) {
+    console.log('toggle', value);
     this.visibleTooltip$.next(value);
   }
 
   setOptions(options: any) {
+    console.log('set options', options);
     this.optionsTooltip$.next(options);
   }
 
