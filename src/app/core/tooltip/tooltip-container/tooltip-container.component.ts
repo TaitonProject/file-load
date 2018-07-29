@@ -2,8 +2,7 @@ import { Component, NgZone, ElementRef, AfterViewInit, OnDestroy, ChangeDetectio
 import { TooltipService } from '../tooltip.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Subscription } from 'rxjs';
-import { mergeMap, mergeAll, switchMap, merge, combineAll, combineLatest, map, mapTo, debounceTime } from 'rxjs/operators';
-import { TooltipOptions } from '../tooltip.directive';
+import { combineLatest, debounceTime } from 'rxjs/operators';
 
 @Component({
     selector: 'cl-tooltip-container',
@@ -55,6 +54,7 @@ export class TooltipContainerComponent implements AfterViewInit, OnDestroy {
             this.element.nativeElement.style.visibility = 'hidden';
         }
     }
+
     counter() {
         console.log('count!', TooltipContainerComponent.counter++);
     }

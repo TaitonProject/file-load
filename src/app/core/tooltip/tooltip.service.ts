@@ -10,7 +10,9 @@ export class TooltipService {
   visibleTooltip$: Subject<boolean> = new Subject();
   optionsTooltip$: Subject<ClTooltipOptions> = new Subject();
 
-  constructor() { }
+  constructor() {
+    console.log('tooltip service');
+  }
 
   toggleTooltip(value: boolean) {
     console.log('toggle', value);

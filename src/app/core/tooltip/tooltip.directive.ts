@@ -23,7 +23,7 @@ export class TooltipDirective implements AfterViewInit, OnDestroy {
         private _renderer: Renderer2) { }
 
     ngAfterViewInit() {
-        console.log('tooltip init', this._element);
+        // console.log('tooltip init', this._element);
         this._zone.runOutsideAngular(_ => {
             this._renderer.listen(this._element.nativeElement, 'mouseenter', this.show);
             this._renderer.listen(this._element.nativeElement, 'mouseleave', this.hide);
@@ -39,7 +39,7 @@ export class TooltipDirective implements AfterViewInit, OnDestroy {
             this._showTimeout = undefined;
             this._tooltipService.toggleTooltip(true);
             this._tooltipService.setOptions({ content: this.clTooltip, position: { x: $event.pageX, y: $event.pageY } });
-        }, 300);
+        }, 500);
     }
 
     hide = () => {
