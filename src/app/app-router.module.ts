@@ -10,7 +10,8 @@ export const routes: Routes = [
   { path: ROUTES_PATH.tree, loadChildren: './tree-page/tree-page.module#TreePageModule' },
   { path: ROUTES_PATH.tooltip, component: AboutPageComponent },
   { path: ROUTES_PATH.scroll, loadChildren: './scroll-page/scroll-page.module#ScrollPageModule' },
-  { path: ROUTES_PATH.biWindow, loadChildren: './bi-window-page/bi-window-page.module#BiWindowPageModule' }
+  { path: ROUTES_PATH.biWindow, loadChildren: './bi-window-page/bi-window-page.module#BiWindowPageModule' },
+  { path: ROUTES_PATH.header, loadChildren: './header-style/header-style.module#HeaderStyleModule' }
 ];
 
 @NgModule({

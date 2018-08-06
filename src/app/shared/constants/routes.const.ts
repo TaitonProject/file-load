@@ -4,5 +4,6 @@ export const ROUTES_PATH = {
     tree: 'tree',
     tooltip: 'tooltip',
     scroll: 'scroll',
-    biWindow: 'bi-window'
+    biWindow: 'bi-window',
+    header: 'header-style'
 };

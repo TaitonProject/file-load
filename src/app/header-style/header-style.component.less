@@ -1,0 +1,78 @@
+.header {
+    background: #dbdbdb;
+    padding: 0 10px 0 10px;
+    display: flex;
+    position: relative;
+    height: 30px;
+    align-items: center;
+
+    .search {
+        padding-left: 0px;
+        width: 200px;
+        input {
+            width: inherit;
+        }
+    }
+
+    .handlers {
+        display: flex;
+        :not(:first-child) {
+            padding-left: 10px;
+        }
+        .handler-item {
+            width: 60px;
+            background: red;
+        }
+    }
+
+    .datasets {
+        overflow: hidden;
+        display: flex;
+        
+        .datasets-info {
+            display: inherit;
+            border: solid;
+            overflow: inherit;
+            border-color: #bdbdbd;
+            border-radius: 5px;
+            .text {
+                white-space: nowrap; 
+                overflow: inherit; 
+                text-overflow: ellipsis;
+            }
+            .data-toggler {
+                display: inherit;
+                margin-left: 2px;
+                .data-state {
+                    &:not(:first-child) {
+                        margin-left: 5px;
+                    }
+                    &:hover {
+                        background: green;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        
+    }
+
+    .users {
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto;
+        width: 200px;
+        .user-icon {
+            overflow: hidden;
+            width: inherit;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .header-item {
+        &:not(.search) {
+            padding-left: 15px;
+        }
+    }
+}
