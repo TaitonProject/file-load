@@ -1,0 +1,49 @@
+.grid {
+    height: 100px;
+    display: grid;
+    grid-template-areas:
+    'a a a a a'
+    'b b b b b';
+    grid-gap: 10px;
+    grid-auto-columns: max-content;
+    overflow: auto;
+  }
+
+  .grid-header {
+    height: 100px;
+    overflow: auto;
+  }
+
+  .grid-content {
+    height: 100px;
+    overflow: auto;
+
+    div {
+        background-color: lime;
+    }
+  }
+
+  div {
+      min-width: 30px;
+  }
+  .item1 { grid-area: header; }
+//   #grid1 {
+//     height: 100px;
+//     display: grid;
+//     grid-template-areas: "a a";
+//     grid-gap: 10px;
+//     grid-auto-columns: max-content;
+//     overflow: auto;
+//   }
+  
+//   #grid1 > div {
+//     background-color: red;
+//   }
+  
+//   div > input {
+//     width: 100%;
+//   }
+  
+//   .content {
+//     width: 200px;
+//   }

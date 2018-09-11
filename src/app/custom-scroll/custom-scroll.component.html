@@ -1,0 +1,10 @@
+<cl-virtual-scroll
+    [items]="items"
+    (update)="shownItems = $event"
+>
+    <cl-scroll-item
+        *ngFor="let item of shownItems; let index = index"
+        [data]="item"
+        [index]="index"
+    ></cl-scroll-item>
+</cl-virtual-scroll>

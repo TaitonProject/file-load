@@ -1,0 +1,17 @@
+<div
+    class="content"
+    (scroll)="scroll($event)"
+>
+    <!-- <div
+        class="padding"
+        [ngStyle]="{'padding-top.px': padding}"
+    ></div> -->
+    <div
+        class="scroll-content"
+        [ngStyle]="{'transform': 'translateY(' + padding + 'px)'}"
+    >
+        <ng-content></ng-content>
+    </div>
+
+    <div [ngStyle]="{'height.px': height }"></div>
+</div>

@@ -11,16 +11,16 @@ export class TooltipService {
   optionsTooltip$: Subject<ClTooltipOptions> = new Subject();
 
   constructor() {
-    console.log('tooltip service');
+    // console.log('tooltip service');
   }
 
   toggleTooltip(value: boolean) {
-    console.log('toggle', value);
+    // console.log('toggle', value);
     this.visibleTooltip$.next(value);
   }
 
   setOptions(options: any) {
-    console.log('set options', options);
+    // console.log('set options', options);
     this.optionsTooltip$.next(options);
   }
 

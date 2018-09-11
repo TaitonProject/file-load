@@ -5,5 +5,7 @@ export const ROUTES_PATH = {
     tooltip: 'tooltip',
     scroll: 'scroll',
     biWindow: 'bi-window',
-    header: 'header-style'
+    header: 'header-style',
+    grid: 'grid',
+    custom_scroll: 'custom-scroll'
 };
